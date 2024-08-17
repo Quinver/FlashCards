@@ -27,6 +27,6 @@ Follow the instructions below to set up and run the application on your local ma
    dotnet run
 3. **Open in browser with port 5011**
    
-   [http://localhost:5227/](http://localhost:5011/)
+   [http://localhost:5011/](http://localhost:5011/)
 
    (Change ports in FinanceManager/Properties/launchSettings.json)
