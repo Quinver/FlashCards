@@ -1,0 +1,89 @@
+@model FlashCards.Models.Deck
+@{
+    ViewData["Title"] = "Create Card";
+}
+
+<style>
+    .card-container {
+        perspective: 1000px; /* Gives a 3D space to the card */
+        width: 300px;
+        height: 200px;
+        margin: 20px;
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+        cursor: pointer;
+    }
+
+    .card-front, .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden; /* Hides the back side when it is not visible */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .card-front {
+        background-color: #f9f9f9;
+    }
+
+    .card-back {
+        background-color: #f9f9f9;
+        transform: rotateY(180deg); /* Flips the back side */
+    }
+
+    .card.flipped {
+        transform: rotateY(180deg);
+    }
+
+</style>
+
+<h1>@Model.Name</h1>
+<p>@Model.Description</p>
+<p>@Model.Category</p>
+
+<h2>Flashcards in this Deck</h2>
+<a class="btn btn-primary" asp-controller="FlashCards" asp-action="Create">Add Cards</a>
+@if (Model.CardList().Any())
+{
+    @foreach (var card in Model.CardList())
+    {
+        <div class="card-container">
+            <div class="card">
+                <div class="card-front">
+                    <p>@card.Front</p>
+                </div>
+                <div class="card-back">
+                    <p>@card.Back</p>
+                </div>
+            </div>
+        </div>
+    }
+
+}
+else
+{
+    <p>No flashcards in this deck yet.</p>
+}
+
+<script>
+    document.querySelectorAll('.card-container').forEach(function(container) {
+        container.addEventListener('click', function() {
+            container.querySelector('.card').classList.toggle('flipped');
+        });
+    });
+
+</script>
+    
