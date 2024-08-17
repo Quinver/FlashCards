@@ -32,7 +32,7 @@ namespace FlashCards.Controllers
 
         [HttpGet]
         public IActionResult Create()
-        {
+        { 
             return View();
         }
 

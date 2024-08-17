@@ -28,3 +28,4 @@ D:\Coding\webapp\FlashCards\obj\Debug\net8.0\refint\FlashCards.dll
 D:\Coding\webapp\FlashCards\obj\Debug\net8.0\FlashCards.pdb
 D:\Coding\webapp\FlashCards\obj\Debug\net8.0\FlashCards.genruntimeconfig.cache
 D:\Coding\webapp\FlashCards\obj\Debug\net8.0\ref\FlashCards.dll
+D:\Coding\webapp\FlashCards\obj\Debug\net8.0\FlashCards.sourcelink.json

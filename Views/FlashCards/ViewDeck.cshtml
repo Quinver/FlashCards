@@ -55,7 +55,7 @@
 <p>@Model.Category</p>
 
 <h2>Flashcards in this Deck</h2>
-<a class="btn btn-primary" asp-controller="FlashCards" asp-action="Create">Add Cards</a>
+<a class="btn btn-primary" asp-controller="FlashCards" asp-action="Create" asp-route-deckId="@Model.Id">Add Cards</a>
 @if (Model.CardList().Any())
 {
     @foreach (var card in Model.CardList())

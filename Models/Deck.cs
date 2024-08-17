@@ -20,7 +20,7 @@ namespace FlashCards.Models
             flashCard.DeckId = Id;
             FlashCards.Add(flashCard);
         }
-        
+
         public List<FlashCard> CardList()
         {
             return FlashCards;

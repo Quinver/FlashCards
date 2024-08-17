@@ -1,24 +1,25 @@
 @model FlashCards.Models.FlashCard
+
 @{
-    ViewData["Title"] = "Create Card";
+    ViewBag.Title = "Create FlashCard";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h2>Create FlashCard</h2>
 
-<form asp-action="Create" method="post" class="row">
-    <div class="col-sm-3">
-        <label asp-for="Front" class="form-label"></label>
-        <input asp-for="Front" class="form-control" required />
-        <span asp-validation-for="Front" class="text-danger"></span>    
+<form asp-action="Create">
+    <input type="hidden" name="DeckId" value="@ViewBag.DeckId" />
+
+    <div class="form-group">
+        <label asp-for="Front" class="control-label"></label>
+        <input asp-for="Front" class="form-control" />
+        <span asp-validation-for="Front" class="text-danger"></span>
     </div>
-    <div class="col-sm-3">
-        <label asp-for="Back" class="form-label"></label>
+    <div class="form-group">
+        <label asp-for="Back" class="control-label"></label>
         <input asp-for="Back" class="form-control" />
-        <span asp-validation-for="Back" class="text-danger"></span>    
+        <span asp-validation-for="Back" class="text-danger"></span>
     </div>
-
-    <div class="col align-self-end">
-        <input type="hidden" asp-for="DeckId" />
+    <div class="form-group">
         <input type="submit" value="Create" class="btn btn-primary" />
     </div>
 </form>

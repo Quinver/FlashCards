@@ -35,5 +35,39 @@ namespace FlashCards.Controllers
 
             return View(deck);
         }
+
+        [HttpGet]
+        public IActionResult Create(int deckId)
+        {
+            if (deckId <= 0)
+            {
+                return BadRequest("Invalid deck ID.");
+            }
+
+            // Pass the deckId to the view
+            ViewBag.DeckId = deckId;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(FlashCard flashCard)
+        {
+            if (ModelState.IsValid)
+            {
+                var deck = DecksController.decks.FirstOrDefault(d => d.Id == flashCard.DeckId);
+
+                if (deck == null)
+                {
+                    return NotFound("Deck not found.");
+                }
+
+                flashCard.Id = (DecksController.decks.Count > 0) ? DecksController.decks.Max(d => d.Id) + 1 : 1;
+                deck.CardList().Add(flashCard);
+
+                return RedirectToAction("ViewDeck", "FlashCards", new { deckId = flashCard.DeckId });
+            }
+
+            return View(flashCard);
+        }
     }
 }
