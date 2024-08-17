@@ -4,17 +4,28 @@
 }
 
 <style>
+    .card-container-wrapper {
+        position: relative;
+        width: 300px;
+        height: 200px;
+        margin-bottom: 20px; /* Adds space below the card container */
+    }
+
     .card-container {
         perspective: 1000px; /* Gives a 3D space to the card */
         width: 300px;
         height: 200px;
-        margin: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
     .card {
         width: 100%;
         height: 100%;
-        position: relative;
+        position: absolute;
+        top: 0;
+        left: 0;
         transform-style: preserve-3d;
         transition: transform 0.6s;
         cursor: pointer;
@@ -48,6 +59,17 @@
         transform: rotateY(180deg);
     }
 
+    .hidden {
+        display: none;
+    }
+
+    .form-group {
+        margin-top: 20px; /* Adds space above the buttons */
+    }
+
+    .btn {
+        margin-right: 10px; /* Adds space between buttons if needed */
+    }
 </style>
 
 <h1>@Model.Name</h1>
@@ -56,30 +78,33 @@
 
 <h2>Flashcards in this Deck</h2>
 <a class="btn btn-primary" asp-controller="FlashCards" asp-action="Create" asp-route-deckId="@Model.Id">Add Cards</a>
+
 @if (Model.CardList().Any())
 {
-    @foreach (var card in Model.CardList())
-    {
-        <div class="card-container">
-            <div class="card">
-                <div class="card-front">
-                    <p>@card.Front</p>
-                </div>
-                <div class="card-back">
-                    <p>@card.Back</p>
+    <div class="card-container-wrapper">
+        @foreach (var card in Model.CardList())
+        {
+            <div class="card-container card-item hidden">
+                <div class="card">
+                    <div class="card-front">
+                        <p>@card.Front</p>
+                    </div>
+                    <div class="card-back">
+                        <p>@card.Back</p>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <a class="btn btn-warning" asp-controller="FlashCards" asp-action="Edit" asp-route-Id="@card.Id">Edit Card</a>
-                <form asp-controller="FlashCards" asp-action="Delete" method="post">
-                    <input type="hidden" name="id" value="@card.Id" />
-                    <input type="hidden" name="deckId" value="@Model.Id" />
-                    <button type="submit" class="btn btn-danger">Delete Card</button>
-                </form>
-            </div>
-        </div>
-    }
-
+        }
+    </div>
+    <div class="form-group">
+        <a class="btn btn-warning" asp-controller="FlashCards" asp-action="Edit" asp-route-Id="@Model.CardList().First().Id">Edit Card</a>
+        <form asp-controller="FlashCards" asp-action="Delete" method="post">
+            <input type="hidden" name="id" value="@Model.CardList().First().Id" />
+            <input type="hidden" name="deckId" value="@Model.Id" />
+            <button type="submit" class="btn btn-danger">Delete Card</button>
+        </form>
+    </div>
+    <button id="next-card" class="btn btn-primary">Next</button>
 }
 else
 {
@@ -93,5 +118,22 @@ else
         });
     });
 
-</script>
+    let currentIndex = 0;
+    const cards = document.querySelectorAll('.card-item');
     
+    function showCard(index) {
+        cards.forEach((card, i) => {
+            card.classList.toggle('hidden', i !== index);
+        });
+    }
+
+    document.getElementById('next-card').addEventListener('click', function() {
+        if (cards.length > 0) {
+            currentIndex = (currentIndex + 1) % cards.length;
+            showCard(currentIndex);
+        }
+    });
+
+    // Show the first card initially
+    showCard(currentIndex);
+</script>
