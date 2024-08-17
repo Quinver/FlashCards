@@ -1,4 +1,4 @@
-# Simple Finance WebApp
+# Simple FlashCard WebApp
 
 A simple flash card app where you can add cards to a deck.
 
