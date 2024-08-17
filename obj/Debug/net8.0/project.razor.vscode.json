@@ -19368,6 +19368,11 @@
       "FilePath": "D:\\Coding\\webapp\\FlashCards\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "D:\\Coding\\webapp\\FlashCards\\Views\\FlashCards\\Edit.cshtml",
+      "TargetPath": "Views\\FlashCards\\Edit.cshtml",
+      "FileKind": "mvc"
     }
   ],
   "SerializationFormat": "0.3"

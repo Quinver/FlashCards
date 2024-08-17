@@ -7,7 +7,7 @@ namespace FlashCards.Models
 {
     public class FlashCard
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public int DeckId { get; set; }
         public string? Front { get; set; }
         public string? Back { get; set; }

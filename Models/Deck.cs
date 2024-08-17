@@ -16,7 +16,6 @@ namespace FlashCards.Models
 
         public void AddFlashCard(FlashCard flashCard)
         {
-            flashCard.Id = FlashCards.Count + 1;
             flashCard.DeckId = Id;
             FlashCards.Add(flashCard);
         }

@@ -30,6 +30,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxhc2hDYXJkc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Coding/webapp/FlashCards/Views/FlashCards/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxhc2hDYXJkc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Coding/webapp/FlashCards/Views/FlashCards/ViewDeck.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxhc2hDYXJkc1xWaWV3RGVjay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

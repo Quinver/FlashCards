@@ -1,0 +1,25 @@
+@model FlashCards.Models.FlashCard
+
+@{
+    ViewBag.Title = "Edit FlashCard";
+}
+
+<h2>Edit FlashCard</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <div class="form-group">
+        <label asp-for="Front" class="control-label"></label>
+        <input asp-for="Front" class="form-control" />
+        <span asp-validation-for="Front" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Back" class="control-label"></label>
+        <input asp-for="Back" class="form-control" />
+        <span asp-validation-for="Back" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
