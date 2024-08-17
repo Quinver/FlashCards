@@ -29,4 +29,4 @@ Follow the instructions below to set up and run the application on your local ma
    
    [http://localhost:5011/](http://localhost:5011/)
 
-   (Change ports in FinanceManager/Properties/launchSettings.json)
+   (Change ports in FlashCards/Properties/launchSettings.json)
