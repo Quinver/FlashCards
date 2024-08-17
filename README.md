@@ -1,4 +1,4 @@
-# Simple FlashCard WebApp
+# Simple flash card WebApp
 
 A simple flash card app where you can add cards to a deck.
 
